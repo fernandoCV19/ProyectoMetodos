@@ -1,4 +1,4 @@
-
+import org.bson.Document;
 public class Direccion
 {
     private String callePrincipal;
@@ -9,6 +9,13 @@ public class Direccion
         callePrincipal = "";
         nroCasa = 0;
         referencias = "";
+    }
+    
+    public Document getDocument(){
+        Document document = new Document("calle", callePrincipal);
+                 document.append("nroCasa", nroCasa);
+                 document.append("referencias", referencias);
+        return document;
     }
     public String getCalle(){
         return callePrincipal;

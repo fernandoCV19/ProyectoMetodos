@@ -1,5 +1,4 @@
-
-
+import org.bson.Document;
 public class Pedido
 {
     private Usuario usuario;
@@ -15,20 +14,13 @@ public class Pedido
         cantidad = 0;
         observaciones = "";
     }
-    public Usuario getUsuario(){
-        return usuario;
-    }
-    public Producto getProducto(){
-        return producto;
-    }
-    public int getId(){
-        return id;
-    }
-    public int getCantidad(){
-        return cantidad;
-    }
-    public String getObs(){
-        return observaciones;
+     public Document getDocument(){
+        Document document = new Document("_id", id);
+                 document.append("producto", producto.getDocument());
+                 document.append("usuario", usuario.getDocument());
+                 document.append("cantidad", cantidad);
+                 document.append("observaciones", observaciones);
+        return document;
     }
     
     public void setUsuario(Usuario us){
