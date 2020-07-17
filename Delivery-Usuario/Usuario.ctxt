@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Usuario
+comment1.params=
+comment1.target=Usuario()
+comment2.params=
+comment2.target=java.lang.String\ getNombre()
+comment3.params=
+comment3.target=Direccion\ getDireccion()
+comment4.params=
+comment4.target=int\ getNroCi()
+comment5.params=
+comment5.target=int\ getNroCelular()
+comment6.params=nom
+comment6.target=void\ setNombre(java.lang.String)
+comment7.params=dir
+comment7.target=void\ setDireccion(Direccion)
+comment8.params=ci
+comment8.target=void\ setNroCi(int)
+comment9.params=cel
+comment9.target=void\ setNroCelular(int)
+numComments=10

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Direccion
+comment1.params=
+comment1.target=Direccion()
+comment2.params=
+comment2.target=java.lang.String\ getCalle()
+comment3.params=
+comment3.target=int\ getNroCasa()
+comment4.params=
+comment4.target=java.lang.String\ getRefer()
+comment5.params=calle
+comment5.target=void\ setCalle(java.lang.String)
+comment6.params=nro
+comment6.target=void\ setNroCasa(int)
+comment7.params=refer
+comment7.target=void\ setRefer(java.lang.String)
+numComments=8
