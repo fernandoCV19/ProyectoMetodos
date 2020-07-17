@@ -6,11 +6,11 @@ public class Producto
     private String caracteristicas;
     private double precio;
     
-    public Producto(){
-        id = 0;
-        nombre = "";
-        caracteristicas = "";
-        precio = 0.0;
+    public Producto(int id, String nombre, String caracteristicas,double precio){
+        this.id = id;
+        this.nombre = nombre;
+        this.caracteristicas = caracteristicas;
+        this.precio = precio;
     }
     
     public int getId(){

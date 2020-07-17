@@ -8,12 +8,12 @@ public class Pedido
     private int cantidad;
     private String observaciones;
     
-    public Pedido(){
-        usuario = null;
-        producto = null;
-        id = 0;
-        cantidad = 0;
-        observaciones = "";
+    public Pedido(Usuario usuario,Producto producto,int id, int cantidad,String observaciones){
+        this.usuario = usuario;
+        this.producto = producto;
+        this.id = id;
+        this.cantidad = cantidad;
+        this.observaciones = observaciones;
     }
     public Usuario getUsuario(){
         return usuario;

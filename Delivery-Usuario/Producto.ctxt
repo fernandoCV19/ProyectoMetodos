@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Producto
-comment1.params=
-comment1.target=Producto()
+comment1.params=id\ nombre\ caracteristicas\ precio
+comment1.target=Producto(int,\ java.lang.String,\ java.lang.String,\ double)
 comment2.params=
 comment2.target=int\ getId()
 comment3.params=

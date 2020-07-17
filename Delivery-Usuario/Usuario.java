@@ -7,11 +7,11 @@ public class Usuario
     private int nroCi;
     private int nroCelular;
     
-    public Usuario(){
-        nombre="";
-        direccion = null;
-        nroCi = 0;
-        nroCelular = 0;
+    public Usuario(String nombre, Direccion direccion, int nroCi, int nroCelular){
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.nroCi = nroCi;
+        this.nroCelular = nroCelular;
     }
     
     public String getNombre(){

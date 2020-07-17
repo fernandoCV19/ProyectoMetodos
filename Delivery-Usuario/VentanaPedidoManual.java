@@ -21,7 +21,6 @@ public class VentanaPedidoManual extends JFrame
     
     public VentanaPedidoManual(){
         this.setSize(1200,700);
-        this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("PEDIDO MANUAL");
         this.setLocationRelativeTo(null);
@@ -53,6 +52,8 @@ public class VentanaPedidoManual extends JFrame
         //añadir panales
         this.getContentPane().add(arriba,BorderLayout.NORTH);
         this.getContentPane().add(centro,BorderLayout.CENTER);
+        
+        this.setVisible(true);
     }
     
     private void iniciarBotonPedido(){

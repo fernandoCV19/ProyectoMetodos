@@ -5,10 +5,10 @@ public class Direccion
     private int nroCasa;
     private String referencias;
     
-    public Direccion(){
-        callePrincipal = "";
-        nroCasa = 0;
-        referencias = "";
+    public Direccion(String callePrincipal, int nroCasa, String referencias){
+        this.callePrincipal = callePrincipal;
+        this.nroCasa = nroCasa;
+        this.referencias = referencias;
     }
     public String getCalle(){
         return callePrincipal;

@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Direccion
-comment1.params=
-comment1.target=Direccion()
+comment1.params=callePrincipal\ nroCasa\ referencias
+comment1.target=Direccion(java.lang.String,\ int,\ java.lang.String)
 comment2.params=
 comment2.target=java.lang.String\ getCalle()
 comment3.params=

@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Usuario
-comment1.params=
-comment1.target=Usuario()
+comment1.params=nombre\ direccion\ nroCi\ nroCelular
+comment1.target=Usuario(java.lang.String,\ Direccion,\ int,\ int)
 comment2.params=
 comment2.target=java.lang.String\ getNombre()
 comment3.params=
