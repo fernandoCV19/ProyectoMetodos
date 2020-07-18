@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=MongoDB
+comment1.params=
+comment1.target=MongoDB()
+comment2.params=
+comment2.target=MongoDB\ getInstanceMongoDB()
+comment3.params=document\ collectionName
+comment3.target=void\ insertar(org.bson.Document,\ java.lang.String)
+numComments=4

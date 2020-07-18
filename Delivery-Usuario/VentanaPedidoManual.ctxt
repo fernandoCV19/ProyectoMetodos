@@ -2,10 +2,12 @@
 comment0.target=VentanaPedidoManual
 comment1.params=
 comment1.target=VentanaPedidoManual()
-comment2.params=
-comment2.target=void\ iniciarBotonPedido()
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment3.params=
-comment3.target=void\ iniciarBotonRegresar()
+comment3.target=Pedido\ devolverPedido()
 comment4.params=
-comment4.target=void\ JOptionPane()
-numComments=5
+comment4.target=Usuario\ devolverUsuario()
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+numComments=6
