@@ -126,12 +126,14 @@ public class VentanaPedidoManual extends JFrame
                                                 String observaciones = Traductor.conseguirObservaciones(pedir.getText());
                                                 Pedido ped = new Pedido(u,p,cantidad,observaciones);
                                                 MongoDB.insertarPedido(ped);
+                                                /*
                                                 try{         
                                                     CrearXML crear = new CrearXML();
                                                     crear.main(ped);
                                                 }catch(Exception ex){
                                                     System.out.println(ex.getMessage());
                                                 }
+                                                */
 
                                                 JOptionPane.showMessageDialog(panel,"Pedido realizado");
                                             }

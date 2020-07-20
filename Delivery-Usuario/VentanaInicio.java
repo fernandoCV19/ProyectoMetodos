@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import javax.swing.JOptionPane;
 
 public class VentanaInicio extends JFrame 
 {
@@ -64,5 +65,11 @@ public class VentanaInicio extends JFrame
     
     private void iniciarBotonPedidos(){
         pedidos = new JButton ("Mis Pedidos");
+        ActionListener l = new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                JOptionPane.showMessageDialog(fondo,"Porximamente...");
+            }
+        };
+        pedidos.addActionListener(l);
     }
 }

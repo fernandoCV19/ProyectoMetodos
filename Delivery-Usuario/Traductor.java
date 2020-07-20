@@ -26,8 +26,10 @@ public class Traductor
         for (int i = 0; i<text.length;i++){
             if (!comenzar){
                 if (producto(text[i])){
-                    i = i + 1;
+                    i++;
                     comenzar= !comenzar;
+                    res = res+text[i+1];
+                    i++;
                 }
             }   else{
                 if (observaciones(text[i])){
@@ -62,7 +64,7 @@ public class Traductor
         
         if (cantidad==0){
             for (int j = 0;j<text.length;j++){
-                cantidad = cardinal(text[0]);
+                cantidad = cardinal(text[j]);
                 if (cantidad!=0){
                     break;
                 }
