@@ -1,3 +1,4 @@
+import org.bson.Document;
 
 public class Direccion
 {
@@ -28,5 +29,12 @@ public class Direccion
     }
     public void setRefer(String refer){
         referencias = refer;
+    }
+    
+    public Document getDocument(){
+        Document document = new Document("calle", callePrincipal);
+                 document.append("nroCasa", nroCasa);
+                 document.append("referencias", referencias);
+        return document;
     }
 }

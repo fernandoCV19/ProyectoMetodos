@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Traductor
 {
-    private static ArrayList <Producto> productos = new ArrayList<>();
+    private static ArrayList <Producto> productos = MongoDB.getInstanceMongoDB().getInventario();
     /*
     public static Pedido traducir(Usuario usuario,String pedido){
         String [] text = pedido.split("[ ,.]");

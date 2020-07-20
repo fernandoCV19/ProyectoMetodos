@@ -125,6 +125,7 @@ public class VentanaPedidoManual extends JFrame
                                            Usuario u = conseguirUsuario();
                                            String observaciones = Traductor.conseguirObservaciones(pedir.getText());
                                            Pedido ped = new Pedido(u,p,cantidad,observaciones);
+                                           MongoDB.insertarPedido(ped);
                                            JOptionPane.showMessageDialog(panel,"Pedido realizado");
                                        }
                                    }

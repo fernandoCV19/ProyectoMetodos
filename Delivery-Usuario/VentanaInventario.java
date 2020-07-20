@@ -22,9 +22,8 @@ public class VentanaInventario extends JFrame
     private JButton regreso;
 
     public VentanaInventario (){
-        inventario = new ArrayList<>();
-        rellenarLista();
-
+        inventario = MongoDB.getInstanceMongoDB().getInventario();
+        
         this.setSize(1200,700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("CATALOGO");
@@ -69,53 +68,6 @@ public class VentanaInventario extends JFrame
                 }
             };
         regreso.addActionListener(l);
-    }
-
-    private void rellenarLista(){
-        Producto p1 = new Producto(0,"Play","Bonito",130.5);
-        Producto p2 = new Producto(0,"DVD","Ghingon",130.5);
-        Producto p3 = new Producto(0,"Laptop","Chidori",130.5);
-        Producto p4 = new Producto(0,"MP3","Mamalon",130.5);
-        Producto p5 = new Producto(0,"Play","Bonito",130.5);
-        Producto p6 = new Producto(0,"Play","Bonito",130.5);
-        Producto p7 = new Producto(0,"Play","Bonito",130.5);
-        Producto p8 = new Producto(0,"Play","Bonito",130.5);
-        Producto p9 = new Producto(0,"Play","Bonito",130.5);
-        Producto p10 = new Producto(0,"Play","Bonito",130.5);
-        Producto p11 = new Producto(0,"Play","Bonito",130.5);
-        Producto p12 = new Producto(0,"Play","Bonito",130.5);
-        Producto p13 = new Producto(0,"Play","Bonito",130.5);
-        Producto p14 = new Producto(0,"Play","Bonito",130.5);
-        Producto p15 = new Producto(0,"Play","Bonito",130.5);
-        Producto p16 = new Producto(0,"Play","Bonito",130.5);
-        Producto p17 = new Producto(0,"Play","Bonito",130.5);
-        Producto p18 = new Producto(0,"Play","Bonito",130.5);
-        Producto p19 = new Producto(0,"Play","Bonito",130.5);
-        Producto p20 = new Producto(0,"Play","Bonito",130.5);
-        Producto p21 = new Producto(0,"Play","Bonito",130.5);
-
-        inventario.add(p1);
-        inventario.add(p2);
-        inventario.add(p3);
-        inventario.add(p4);
-        inventario.add(p5);
-        inventario.add(p6);
-        inventario.add(p7);
-        inventario.add(p8);
-        inventario.add(p9);
-        inventario.add(p10);
-        inventario.add(p11);
-        inventario.add(p12);
-        inventario.add(p13);
-        inventario.add(p14);
-        inventario.add(p15);
-        inventario.add(p16);
-        inventario.add(p17);
-        inventario.add(p18);
-        inventario.add(p19);
-        inventario.add(p20);
-        inventario.add(p21);
-
     }
 
     private class CuadroDeProducto extends JPanel
@@ -342,6 +294,7 @@ public class VentanaInventario extends JFrame
                                                 String obser = observaciones.getText();
                                                 
                                                 Pedido ped = new Pedido(u,p,canti,obser);
+                                                MongoDB.insertarPedido(ped);
                                                 JOptionPane.showMessageDialog(fondo,"Pedido realizado");
                                             }
                                         }

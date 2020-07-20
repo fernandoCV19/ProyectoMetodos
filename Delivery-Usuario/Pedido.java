@@ -1,4 +1,4 @@
-
+import org.bson.Document;
 
 public class Pedido
 {
@@ -45,5 +45,14 @@ public class Pedido
     }
     public void setObs(String obs){
         observaciones = obs;
+    }
+    
+     public Document getDocument(){
+        Document document = new Document("_id", id);
+                 document.append("producto", producto.getDocument());
+                 document.append("usuario", usuario.getDocument());
+                 document.append("cantidad", cantidad);
+                 document.append("observaciones", observaciones);
+        return document;
     }
 }

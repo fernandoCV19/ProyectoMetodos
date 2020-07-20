@@ -1,4 +1,4 @@
-
+import org.bson.Document;
 
 public class Usuario
 {
@@ -38,5 +38,13 @@ public class Usuario
     }
     public void setNroCelular(int cel){
         nroCelular = cel;
+    }
+    
+    public Document getDocument(){
+        Document document = new Document("name", nombre);
+                 document.append("direccion", direccion.getDocument());
+                 document.append("CI", nroCi);
+                 document.append("celular", nroCelular);
+        return document;
     }
 }
