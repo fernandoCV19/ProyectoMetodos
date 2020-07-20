@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Traductor
+comment1.params=pedido
+comment1.target=Producto\ nombreProducto(java.lang.String)
+comment1.text=\n\ \ \ \ public\ static\ Pedido\ traducir(Usuario\ usuario,String\ pedido){\n\ \ \ \ \ \ \ \ String\ []\ text\ \=\ pedido.split("[\ ,.]");\n\ \ \ \ \ \ \ \ String\ nombreProducto\ \=\ nombreProducto(text);\n\ \ \ \ \ \ \ \ Producto\ producto\ \=\ buscarProducto(nombreProducto);\n\ \ \ \ \ \ \ \ int\ cantidad\ \=\ conseguirCantidad(text);\n\ \ \ \ \ \ \ \ String\ observaciones\ \=\ conseguirObservaciones(text);\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ Pedido\ p\ \=\ new\ Pedido(usuario,producto,cantidad,observaciones);\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ return\ p;\n\ \ \ \ }\n
+comment2.params=nombre
+comment2.target=Producto\ buscarProducto(java.lang.String)
+comment3.params=pedido
+comment3.target=int\ conseguirCantidad(java.lang.String)
+comment4.params=pedido
+comment4.target=java.lang.String\ conseguirObservaciones(java.lang.String)
+comment5.params=cant
+comment5.target=boolean\ cantidad(java.lang.String)
+comment6.params=palabra
+comment6.target=boolean\ producto(java.lang.String)
+comment7.params=palabra
+comment7.target=int\ cardinal(java.lang.String)
+comment8.params=palabra
+comment8.target=boolean\ observaciones(java.lang.String)
+numComments=9

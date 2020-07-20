@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Pedido
-comment1.params=usuario\ producto\ id\ cantidad\ observaciones
-comment1.target=Pedido(Usuario,\ Producto,\ int,\ int,\ java.lang.String)
+comment1.params=usuario\ producto\ cantidad\ observaciones
+comment1.target=Pedido(Usuario,\ Producto,\ int,\ java.lang.String)
 comment10.params=cant
 comment10.target=void\ setCantidad(int)
 comment11.params=obs

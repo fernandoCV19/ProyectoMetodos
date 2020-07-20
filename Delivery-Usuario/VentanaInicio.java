@@ -3,6 +3,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.*;
 
 public class VentanaInicio extends JFrame 
 {
@@ -41,10 +42,24 @@ public class VentanaInicio extends JFrame
     
     private void iniciarBotonPedidoManual(){
         pedidoManual = new JButton ("Pedido Manual");
+        ActionListener l = new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                VentanaPedidoManual m = new VentanaPedidoManual();
+                dispose();
+            }
+        };
+        pedidoManual.addActionListener(l);
     }
     
     private void iniciarBotonPedidoCatalogo(){
         pedidoCatalogo = new JButton ("Pedido Catalogo");
+        ActionListener l = new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                VentanaInventario m = new VentanaInventario();
+                dispose();
+            }
+        };
+        pedidoCatalogo.addActionListener(l);
     }
     
     private void iniciarBotonPedidos(){

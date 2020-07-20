@@ -4,7 +4,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.bson.types.ObjectId;
-public class MongoDB
+public final class MongoDB
 {
     private static MongoDB instance;
     private static String uri;
@@ -25,7 +25,8 @@ public class MongoDB
         }
         return instance;
     }
-    public static void insertar(Document document, String collectionName){
+    public void insertar(Document document, String collectionName){
+        
         MongoCollection collection = mongoDatabase.getCollection(collectionName);        
         collection.insertOne(document);
     }

@@ -7,161 +7,160 @@ public class VentanaPedidoManual extends JFrame
     private JPanel panel;
     private JButton confirmar;
     private JTextArea pedir;
-    private JTextField cant,obs,textNombre,textTelefono,textCi,textCalle,textNro,textRef;
-    private JRadioButton opcion1,opcion2,opcion3;
+    private JTextField textNombre,textTelefono,textCi,textCalle,textNro,textRef;
     private Pedido pedido ;
+    private JButton regresar;
+    
     public VentanaPedidoManual(){
         setTitle("PEDIDO MANUAL");
-        setBounds(100,75,1200,600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setBounds(100,75,1200,500);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);        
+        this.setLocationRelativeTo(null);
         panel = new JPanel();
         panel.setLayout(null);
         setContentPane(panel);
         
+        //iniciar boton
+        iniciarBotonRegreso();
+        panel.add(regresar);
+        
         JLabel ingresarPedido = new JLabel("Ingresa tu pedido:");
-        ingresarPedido.setBounds(40,20,200,20);
+        ingresarPedido.setBounds(40,70,200,20);
         panel.add(ingresarPedido);
         
-        JLabel cantidad = new JLabel("Cantidad:");
-        cantidad.setBounds(65,380,100,20);
-        panel.add(cantidad);
-        
-        JLabel observaciones = new JLabel("Observaciones:");
-        observaciones.setBounds(250,380,100,20);
-        panel.add(observaciones);
-        
         pedir = new JTextArea();
-        pedir.setBounds(50,50,500,300);
+        pedir.setBounds(50,100,500,300);
         panel.add(pedir);
         
-        cant = new JTextField();
-        cant.setBounds(70,420,100,20);
-        panel.add(cant);
-        
-        obs = new JTextField();
-        obs.setBounds(255,420,300,60);
-        panel.add(obs);
-        
         confirmar = new JButton("Continuar");
-        confirmar.setBounds(250,320,100,25);
+        confirmar.setBounds(280,320,100,25);
         panel.add(confirmar);
         
         //Lado derecho...
         
         JLabel nombre = new JLabel("Nombre:");
-        nombre.setBounds(640, 20,100,14);
+        nombre.setBounds(640, 50,100,14);
         panel.add(nombre);
         
         JLabel direccion = new JLabel("Dirección");
-        direccion.setBounds(640, 95,100,14);
+        direccion.setBounds(640, 125,100,14);
         panel.add(direccion);
         JLabel calle = new JLabel("Calle:");
-        calle.setBounds(770,70,75,20);
+        calle.setBounds(770,100,75,20);
         panel.add(calle);
         JLabel nro = new JLabel("Nro:");
-        nro.setBounds(930,70,50,20);
+        nro.setBounds(930,100,50,20);
         panel.add(nro);
         JLabel ref = new JLabel("Referencias:");
-        ref.setBounds(1020,70,150,20);
+        ref.setBounds(1020,90,150,20);
         panel.add(ref);
         
-        JLabel pago = new JLabel("Forma de Pago:");
-        pago.setBounds(640,130,100,14);
-        panel.add(pago);
-        
         JLabel telefono = new JLabel("Telefono de referencia:");
-        telefono.setBounds(640,270,150,14);
+        telefono.setBounds(640,200,150,14);
         panel.add(telefono);
         
         JLabel ci = new JLabel("Cedula de Identidad:");
-        ci.setBounds(640,320,150,20);
+        ci.setBounds(640,250,150,20);
         panel.add(ci);
         
         textNombre = new JTextField ();
-        textNombre.setBounds(800, 20, 300, 20);
+        textNombre.setBounds(800, 50, 300, 20);
         panel.add(textNombre);
 
         textCalle = new JTextField ();
-        textCalle.setBounds(760, 95, 150, 20);
+        textCalle.setBounds(760, 125, 150, 20);
         panel.add(textCalle);
         textNro = new JTextField ();
-        textNro.setBounds(930, 95, 50, 20);
+        textNro.setBounds(930, 125, 50, 20);
         panel.add(textNro);
         textRef = new JTextField ();
-        textRef.setBounds(1020, 95, 150, 20);
+        textRef.setBounds(1020, 125, 150, 20);
         panel.add(textRef);
         
         textTelefono = new JTextField ();
-        textTelefono.setBounds(800, 270, 150, 20);
+        textTelefono.setBounds(800, 200, 150, 20);
         panel.add(textTelefono);
         
         textCi = new JTextField();
-        textCi.setBounds(800,320,150,20);
+        textCi.setBounds(800,250,150,20);
         panel.add(textCi);
         
-        opcion1 = new JRadioButton("Tarjeta de Credito");
-        opcion1.setBounds(680,160,200,14);
-        panel.add(opcion1);
-        
-        opcion2 = new JRadioButton("Tarjeta de Debito");
-        opcion2.setBounds(680,190,200,14);
-        panel.add(opcion2);
-        
-        opcion3 = new JRadioButton("Pagar al recibir");
-        opcion3.setBounds(680,220,200,14);
-        panel.add(opcion3);
-        
-        ButtonGroup grupo = new ButtonGroup();
-        grupo.add(opcion1);
-        grupo.add(opcion2);
-        grupo.add(opcion3);
-        
         confirmar = new JButton("Confirmar");
-        confirmar.setBounds(640,420,200,50);
+        confirmar.setBounds(700,330,200,50);
         panel.add(confirmar);
         
         confirmar.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
-               JOptionPane.showMessageDialog(panel,"Pedido realizado");
-               pedido = devolverPedido();
+               boolean enviar = false;
+               if (!ValidadorDatos.esNombre(textNombre.getText())){
+                   JOptionPane.showMessageDialog(panel,"Ingrese un nombre valido por favor");
+               }
+               else {
+                   if (!ValidadorDatos.esCalle(textCalle.getText())){
+                       JOptionPane.showMessageDialog(panel,"Ingrese una calle valida por favor");
+                   }
+                   else{
+                       if (!ValidadorDatos.esNroCasa(textNro.getText())){
+                           JOptionPane.showMessageDialog(panel,"Ingrese un numero de calle valido por favor");
+                       }
+                       else{
+                           if (!ValidadorDatos.esCelular(textTelefono.getText())){
+                               JOptionPane.showMessageDialog(panel,"Ingrese un numero de telefono valido por favor");
+                           }
+                           else{
+                               if(!ValidadorDatos.esCI(textCi.getText())){
+                                   JOptionPane.showMessageDialog(panel,"Ingrese un numero de CI valido por favor");
+                               }
+                               else{
+                                   Producto p = Traductor.nombreProducto(pedir.getText());
+                                   if (p==null){
+                                       JOptionPane.showMessageDialog(panel,"La tienda no cuenta con ese producto");
+                                   }
+                                   else{
+                                       int cantidad = Traductor.conseguirCantidad(pedir.getText());
+                                       if (cantidad==0){
+                                           JOptionPane.showMessageDialog(panel,"Debe especificar la cantidad deseada");
+                                       }
+                                       else{
+                                           Usuario u = conseguirUsuario();
+                                           String observaciones = Traductor.conseguirObservaciones(pedir.getText());
+                                           Pedido ped = new Pedido(u,p,cantidad,observaciones);
+                                           JOptionPane.showMessageDialog(panel,"Pedido realizado");
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
            }
         });
+        
+        this.setVisible(true);
     }
-    public Pedido devolverPedido(){
-        Pedido res = new Pedido(null,null,0,0,"");
-        int num=0;
-        try{
-            num=Integer.parseInt(cant.getText());
-        }catch(Exception a){
-                    
-        }
-        res.setCantidad(num);
-        res.setObs(obs.getText());
-        res.setUsuario(devolverUsuario());
-        return res;
+    
+    private Usuario conseguirUsuario(){
+        String calle = textCalle.getText();
+        int nroCasa = Integer.parseInt(textNro.getText());
+        String referencias = textRef.getText();
+        Direccion d = new Direccion (calle,nroCasa,referencias);
+        
+        String nombre = textNombre.getText();
+        int nroCi = Integer.parseInt(textCi.getText());
+        int cel = Integer.parseInt(textTelefono.getText());
+        
+        return new Usuario(nombre,d,nroCi,cel);
     }
-    private Usuario devolverUsuario(){
-        Usuario res = new Usuario("",null,0,0);
-        Direccion dir = new Direccion("",0,"");
-        int cid=0,cel=0,nro=0;
-        try{
-            cid=Integer.parseInt(textCi.getText());
-            cel=Integer.parseInt(textTelefono.getText());
-            nro=Integer.parseInt(textNro.getText());
-        }catch(Exception a){
-                    
-        }
-        dir.setCalle(textCalle.getText());
-        dir.setNroCasa(nro);
-        dir.setRefer(textRef.getText());
-        res.setNombre(textNombre.getText());
-        res.setDireccion(dir);
-        res.setNroCi(cid);
-        res.setNroCelular(cel);
-        return res;
-    }
-
-    public static void main(String [] args){
-        new VentanaPedidoManual().setVisible(true);
+    
+    private void iniciarBotonRegreso(){
+        regresar = new JButton("Regresar");
+        regresar.setBounds(40,10, 150,40);
+        ActionListener l = new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                VentanaInicio m = new VentanaInicio();
+                dispose();
+            }
+        };
+        regresar.addActionListener(l);
     }
 }
