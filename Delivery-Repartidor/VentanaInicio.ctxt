@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=VentanaInicio
+comment1.params=
+comment1.target=VentanaInicio()
+comment2.params=
+comment2.target=void\ iniciarBotonMiPedidos()
+comment3.params=e
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=
+comment4.target=void\ iniciarBotonSolicitar()
+comment5.params=e
+comment5.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=6
