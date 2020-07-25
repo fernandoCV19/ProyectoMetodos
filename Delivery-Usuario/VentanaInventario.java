@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import java.awt.event.*;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
 public class VentanaInventario extends JFrame
 {
@@ -23,7 +25,7 @@ public class VentanaInventario extends JFrame
 
     public VentanaInventario (){
         inventario = MongoDB.getInstanceMongoDB().getInventario();
-        
+
         this.setSize(1200,700);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("CATALOGO");
@@ -47,13 +49,18 @@ public class VentanaInventario extends JFrame
 
         for (Producto p: inventario){
             CuadroDeProducto cdp = new CuadroDeProducto(p);
-            productos.add(cdp);
+            productos.add(cdp); 
         }
 
         JScrollPane produc = new JScrollPane(productos);
         //poner paneles
-        this.getContentPane().add(regreso,BorderLayout.NORTH);
-        this.getContentPane().add(produc,BorderLayout.CENTER);
+        this.getContentPane().
+
+        add(regreso,BorderLayout.NORTH);
+        this.
+        getContentPane().
+
+        add(produc,BorderLayout.CENTER);
 
         //visible
         this.setVisible(true);
@@ -64,6 +71,7 @@ public class VentanaInventario extends JFrame
         ActionListener l = new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     VentanaInicio m = new VentanaInicio();
+                    m.run();
                     dispose();
                 }
             };
@@ -105,7 +113,7 @@ public class VentanaInventario extends JFrame
             caracteristicas.setPreferredSize(new Dimension(280,40));
             caracteristicas.setHorizontalAlignment(2);
 
-            JLabel caracteristicasx = new JLabel(producto.getCarac());
+            JLabel caracteristicasx = new JLabel(producto.getCaracteristicas());
             caracteristicasx.setPreferredSize(new Dimension(280,40));
             caracteristicasx.setHorizontalAlignment(0);
 
@@ -155,11 +163,13 @@ public class VentanaInventario extends JFrame
             private JTextField cantidad;
             private JButton pedir;
             private JPanel fondo;
+            private JRadioButton inmediato;
+            private JRadioButton normal;
 
             Producto p;
             public DatosYConfirmacion(Producto p){
                 this.p = p;
-                this.setSize(700,650);
+                this.setSize(700,750);
                 this.setTitle("CATALOGO");
                 this.setLocationRelativeTo(null);
 
@@ -212,19 +222,31 @@ public class VentanaInventario extends JFrame
 
                 JLabel lOtros = new JLabel("Otros");
                 lOtros.setBounds(300,380,200,30);
-                
+
                 JLabel lCantidad = new JLabel("Cantidad:");
                 lCantidad.setBounds(20,410,100,30);
-                
+
                 cantidad = new JTextField();
                 cantidad.setBounds(200,410,400,30);
-                
+
                 JLabel lObservaciones = new JLabel("Observaciones:");
                 lObservaciones.setBounds(20,460,100,30);
-                
+
                 observaciones = new JTextArea();
                 observaciones.setBounds(200,460,400,80);
                 
+                
+                //radio botones
+                inmediato = new JRadioButton("Entrega inmediata",true);
+                inmediato.setBounds(20,560,400,30);
+                
+                normal = new JRadioButton ("Entrega normal",false);
+                normal.setBounds(20,600,400,30);
+                
+                ButtonGroup grupo = new ButtonGroup();
+                grupo.add(inmediato);
+                grupo.add(normal);
+
                 //añadir todo
                 fondo.add(lDatos);
                 fondo.add(lNombre);
@@ -246,6 +268,8 @@ public class VentanaInventario extends JFrame
                 fondo.add(cantidad);
                 fondo.add(lObservaciones);
                 fondo.add(observaciones);
+                fondo.add(normal);
+                fondo.add(inmediato);
 
                 this.getContentPane().add(fondo);
                 this.setVisible(true);
@@ -253,7 +277,7 @@ public class VentanaInventario extends JFrame
 
             private void iniciarBotonPedir(){
                 pedir = new JButton("Pedir");
-                pedir.setBounds(300,550,100,50);
+                pedir.setBounds(300,650,100,50);
                 ActionListener l = new ActionListener(){
                         public void actionPerformed(ActionEvent e){
                             String nom = nombre.getText();
@@ -284,25 +308,30 @@ public class VentanaInventario extends JFrame
                                                 String ref = referencias.getText();
                                                 Direccion d = new Direccion(calle,Integer.parseInt(nro),ref);
                                                 Usuario u = new Usuario(nom,d,Integer.parseInt(CI),Integer.parseInt(cel));
-                                                
+
                                                 String cant = cantidad.getText();
                                                 int canti = 1;
                                                 if (!cant.equals("")){
                                                     canti = Integer.parseInt(cant);
                                                 }
-                                                
+
                                                 String obser = observaciones.getText();
                                                 
-                                                Pedido ped = new Pedido(u,p,canti,obser);
+                                                boolean inme = false;
+                                                if (inmediato.isFocusOwner()){
+                                                    inme = true;
+                                                }
+                                                
+                                                Pedido ped = new Pedido(u,p,canti,obser,inme);
                                                 MongoDB.insertarPedido(ped);
                                                 /*
                                                 try{         
-                                                    CrearXML crear = new CrearXML();
-                                                    crear.main(ped);
+                                                CrearXML crear = new CrearXML();
+                                                crear.main(ped);
                                                 }catch(Exception ex){
-                                                    System.out.println(ex.getMessage());
+                                                System.out.println(ex.getMessage());
                                                 }
-                                                */
+                                                 */
                                                 JOptionPane.showMessageDialog(fondo,"Pedido realizado");
                                             }
                                         }

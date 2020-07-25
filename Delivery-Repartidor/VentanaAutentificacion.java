@@ -52,7 +52,12 @@ public class VentanaAutentificacion extends JFrame
         ingresar.setBounds(300,350,100,50);
         ActionListener al = new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                JOptionPane.showMessageDialog(fondo,"Ingresa un nombre de usuario o id valido");
+                Dealer yo = MongoDB.getDealer(nombre.getText(),Integer.parseInt(autentificacion.getText()));
+                if (yo==null)
+                    JOptionPane.showMessageDialog(fondo,"Ingresa un nombre de usuario o id valido");
+                    else{
+                        VentanaInicio ini = new VentanaInicio(yo);
+                    }
             }
         };
         ingresar.addActionListener(al);

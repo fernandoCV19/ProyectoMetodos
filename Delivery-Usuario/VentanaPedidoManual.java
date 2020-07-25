@@ -10,6 +10,7 @@ public class VentanaPedidoManual extends JFrame
     private JTextField textNombre,textTelefono,textCi,textCalle,textNro,textRef;
     private Pedido pedido ;
     private JButton regresar;
+    private JRadioButton inmediato,normal;
 
     public VentanaPedidoManual(){
         setTitle("PEDIDO MANUAL");
@@ -84,9 +85,22 @@ public class VentanaPedidoManual extends JFrame
         textCi = new JTextField();
         textCi.setBounds(800,250,150,20);
         panel.add(textCi);
+        
+        
+        inmediato = new JRadioButton ("Inmediato",true);
+        inmediato.setBounds(640,290,200,30);
+        panel.add(inmediato);
+        
+        normal = new JRadioButton("Normal",false);
+        normal.setBounds(640,330,200,30);
+        panel.add(normal);
+        
+        ButtonGroup grupo = new ButtonGroup();
+        grupo.add(inmediato);
+        grupo.add(normal);
 
         confirmar = new JButton("Confirmar");
-        confirmar.setBounds(700,330,200,50);
+        confirmar.setBounds(780,380,200,50);
         panel.add(confirmar);
 
         confirmar.addActionListener(new ActionListener(){
@@ -124,7 +138,13 @@ public class VentanaPedidoManual extends JFrame
                                             else{
                                                 Usuario u = conseguirUsuario();
                                                 String observaciones = Traductor.conseguirObservaciones(pedir.getText());
-                                                Pedido ped = new Pedido(u,p,cantidad,observaciones);
+                                                boolean aux = false;
+                                                if (inmediato.isFocusOwner()){
+                                                    aux = true;
+                                                }
+                                                
+                                                
+                                                Pedido ped = new Pedido(u,p,cantidad,observaciones,aux);
                                                 MongoDB.insertarPedido(ped);
                                                 /*
                                                 try{         
@@ -168,6 +188,7 @@ public class VentanaPedidoManual extends JFrame
         ActionListener l = new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     VentanaInicio m = new VentanaInicio();
+                    m.run();
                     dispose();
                 }
             };

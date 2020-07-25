@@ -33,4 +33,16 @@ public class Producto
                  p.setPrecio(Double.parseDouble(prod.get("price").toString()));
         return p;
     }
+    
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public String getCaracteristicas(){
+        return caracteristicas;
+    }
+    
+    public double getPrecio(){
+        return precio;
+    }
 }

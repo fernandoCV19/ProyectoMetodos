@@ -12,7 +12,7 @@ public class VentanaMisPedidos extends JFrame
     JPanel fondo;
     JButton regresar;
 
-    public VentanaMisPedidos(){
+    public VentanaMisPedidos(Dealer yo){
         this.yo = yo;
 
         this.setSize(800,600);
@@ -50,9 +50,9 @@ public class VentanaMisPedidos extends JFrame
             JLabel nombre = new JLabel("Nombre:");
             JLabel celular = new JLabel("Nro celular:");
             JLabel ci = new JLabel("CI:");
-            JLabel nombrex = new JLabel("El nombre es");
-            JLabel celularx = new JLabel ("El celular es");
-            JLabel cix = new JLabel ("El ci es");
+            JLabel nombrex = new JLabel(pedido.getUsuario().getNombre());
+            JLabel celularx = new JLabel (pedido.getUsuario().getNroCelular()+"");
+            JLabel cix = new JLabel (pedido.getUsuario().getNroCi()+"");
 
             superior.add(nombre);
             superior.add(celular);
@@ -61,15 +61,17 @@ public class VentanaMisPedidos extends JFrame
             superior.add(celularx);
             superior.add(cix);
 
+            
+            
             JPanel medioSup = new JPanel();
             GridLayout grid2 = new GridLayout(2,3);
             medioSup.setLayout(grid2);
             JLabel calle = new JLabel("Calle:");
             JLabel ncasa = new JLabel("Nro Casa:");
             JLabel referencias = new JLabel ("Referencias:");
-            JLabel callex = new JLabel("La calle es");
-            JLabel ncasax = new JLabel("El numero de casa es");
-            JLabel referenciasx = new JLabel("Las referenicas son");
+            JLabel callex = new JLabel(pedido.getUsuario().getDireccion().getCalle());
+            JLabel ncasax = new JLabel(pedido.getUsuario().getDireccion().getNroCasa()+"");
+            JLabel referenciasx = new JLabel(pedido.getUsuario().getDireccion().getRefer());
 
             medioSup.add(calle);
             medioSup.add(ncasa);
@@ -78,34 +80,49 @@ public class VentanaMisPedidos extends JFrame
             medioSup.add(ncasax);
             medioSup.add(referenciasx);
 
+            
+            
             JPanel medio = new JPanel();
             GridLayout grid3 = new GridLayout(2,2);
             medio.setLayout(grid3);
 
             JLabel producto = new JLabel("Producto:");
             JLabel caract = new JLabel("Caracteristicas:");
-            JLabel productox = new JLabel("El producto es");
-            JLabel caractx = new JLabel("Las caracteristicas son");
+            JLabel productox = new JLabel(pedido.getProducto().getNombre());
+            JLabel caractx = new JLabel(pedido.getProducto().getCaracteristicas());
 
             medio.add(producto);
             medio.add(caract);
             medio.add(productox);
             medio.add(caractx);
 
+            
+            
             JPanel medioInf = new JPanel();
-            GridLayout grid4 = new GridLayout(1,4);
+            GridLayout grid4 = new GridLayout(1,6);
             medioInf.setLayout(grid4);
 
             JLabel cantidad = new JLabel("Cantidad:");
             JLabel precio = new JLabel("Precio:");
-            JLabel cantidadx = new JLabel("La cantidad es");
-            JLabel preciox = new JLabel("El precio es");
+            JLabel inmediato = new JLabel("Es inmediato:");
+            JLabel cantidadx = new JLabel(pedido.getCantidad()+"");
+            double costo = pedido.getCantidad() * pedido.getProducto().getPrecio();
+            JLabel preciox = new JLabel(costo+"");
+            JLabel inmediatox;
+            if (pedido.getEntregaInmediata())
+                inmediatox = new JLabel("Si");
+                else
+                    inmediatox = new JLabel("No");
 
             medioInf.add(cantidad);
             medioInf.add(precio);
             medioInf.add(cantidadx);
             medioInf.add(preciox);
+            medioInf.add(inmediato);
+            medioInf.add(inmediatox);
 
+            
+            
             JPanel inferior = new JPanel();
             GridLayout grid5 = new GridLayout(1,2);
             inferior.setLayout(grid5);
@@ -115,7 +132,7 @@ public class VentanaMisPedidos extends JFrame
             infIzq.setLayout(grid6);
 
             JLabel observaciones = new JLabel("Observaciones:");
-            JLabel observacionesx = new JLabel("Las observaciones son");
+            JLabel observacionesx = new JLabel(pedido.getObservaciones());
 
             infIzq.add(observaciones);
             infIzq.add(observacionesx);
@@ -130,6 +147,8 @@ public class VentanaMisPedidos extends JFrame
             inferior.add(infIzq);
             inferior.add(infDer);
 
+            
+            
             fondo.add(superior);
             fondo.add(medioSup);
             fondo.add(medio);
@@ -143,8 +162,24 @@ public class VentanaMisPedidos extends JFrame
             reproducir = new JButton("Reproducir");
             ActionListener al = new ActionListener(){
                     public void actionPerformed(ActionEvent e){
+                        Reconocedor voz = new Reconocedor();
+                        Usuario u = pedido.getUsuario();
+                        Direccion d = u.getDireccion();
+                        Producto p = pedido.getProducto();
+                        int cantidad = pedido.getCantidad();
+                        String obs = pedido.getObservaciones();
                         
+                        String texto = "Pedido para "+u.getNombre()+" de CI " + u.getNroCi() + " y celular " + u.getNroCelular();
+                        String texto1 = "Vive en "+d.getCalle()+" numero de casa "+d.getNroCasa()+" "+d.getRefer();
+                        String texto2 = "El producto es "+p.getNombre()+" "+p.getCaracteristicas();
+                        String texto3 = "La cantidad es "+cantidad+" y el precio es "+(cantidad*p.getPrecio());
+                        String texto4 = "Las observaciones son "+obs;
                         
+                        voz.hablar(texto);
+                        voz.hablar(texto1);
+                        voz.hablar(texto2);
+                        voz.hablar(texto3);
+                        voz.hablar(texto4);
                     }
                 };
             reproducir.addActionListener(al);
@@ -156,6 +191,7 @@ public class VentanaMisPedidos extends JFrame
                     public void actionPerformed(ActionEvent e){
                         MongoDB.pedidoEntregado(pedido);
                         yo.pedidoEntregado(pedido);
+                        dispose();
                     }
                 };
             entregado.addActionListener(al);

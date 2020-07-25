@@ -42,4 +42,20 @@ public class Usuario
                 u.setNroCi(Integer.parseInt(usu.get("CI").toString()));
         return u;
     }
+    
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public Direccion getDireccion(){
+        return direccion;
+    }
+    
+    public int getNroCi(){
+        return nroCi;
+    }
+    
+    public int getNroCelular(){
+        return nroCelular;
+    }
 }

@@ -2,6 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import java.awt.event.*;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
@@ -9,12 +10,12 @@ import java.awt.FlowLayout;
 
 public class VentanaInicio extends JFrame
 {
-    Object yo;
+    Dealer yo;
     JButton misPedidos;
     JButton solicitar;
     JPanel fondo;
     JPanel arriba;
-    public VentanaInicio(){
+    public VentanaInicio(Dealer yo){
         this.yo = yo;
         
         this.setSize(800,600);
@@ -55,7 +56,7 @@ public class VentanaInicio extends JFrame
         misPedidos = new JButton ("Mis pedidos pendientes");
         ActionListener al = new ActionListener(){
             public void actionPerformed(ActionEvent e){
-            
+                VentanaMisPedidos vent = new VentanaMisPedidos(yo);
             }
         };
         misPedidos.addActionListener(al);
@@ -65,7 +66,12 @@ public class VentanaInicio extends JFrame
         solicitar = new JButton ("Pedir nueva orden");
         ActionListener al = new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                
+                Pedido p = MongoDB.buscarPedido(yo);
+                if (p==null){
+                    JOptionPane.showMessageDialog(fondo,"No hay nuevos pedidos disponibles. Intenta despues");
+                }   else{
+                    JOptionPane.showMessageDialog(fondo,"Se agrego un nuevo pedido a tu inventario");
+                }
             }
         };
         solicitar.addActionListener(al);

@@ -15,26 +15,16 @@ public class Producto
     }
 
     public Producto(){
-        
-    }
-    public int getId(){
-        return id;
-    }
-
-    public String getNombre(){
-        return nombre;
+        nombre = "";
+        caracteristicas = "";
+        precio = 0.0;
     }
 
-    public String getCarac(){
-        return caracteristicas;
-    }
-
-    public double getPrecio(){
-        return precio;
-    }
-
-    public void setId( int id){
-        this.id = id;
+    public Document getDocument(){
+        Document document = new Document("name", nombre);
+        document.append("features", caracteristicas);
+        document.append("price", precio);
+        return document;
     }
 
     public void setNombre(String nom){
@@ -49,10 +39,24 @@ public class Producto
         precio = prec;
     }
 
-    public Document getDocument(){
-        Document document = new Document("name", nombre);
-        document.append("features", caracteristicas);
-        document.append("price", precio);
-        return document;
+    public Producto getProducto(Document prod){
+        Producto p = new Producto();
+        p.setCarac(prod.get("features").toString());
+        p.setNombre(prod.get("name").toString());
+        p.setPrecio(Double.parseDouble(prod.get("price").toString()));
+        return p;
     }
+
+    public String getNombre(){
+        return nombre;
+    }
+
+    public String getCaracteristicas(){
+        return caracteristicas;
+    }
+
+    public double getPrecio(){
+        return precio;
+    }
+
 }

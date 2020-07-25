@@ -6,7 +6,7 @@ import com.mongodb.client.FindIterable;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import java.util.ArrayList;
-public class MongoDB
+public class MongoDB extends Thread
 {
     private static MongoDB instance;
     private static String uri;
@@ -58,5 +58,9 @@ public class MongoDB
             lista.add(p);
         }
         return lista;
+    }
+    
+    public void run(){
+        getInstanceMongoDB();
     }
 }

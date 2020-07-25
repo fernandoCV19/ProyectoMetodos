@@ -7,7 +7,6 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 import java.util.ArrayList;
 import java.util.Queue;
-
 public final class MongoDB
 {
     private static MongoDB instance;
@@ -29,13 +28,18 @@ public final class MongoDB
         }
         return instance;
     }
-    public static Dealer getDealer(String nombre){
-        MongoCollection collection = mongoDatabase.getCollection("Dealers");        
-        Document found = (Document) collection.find(new Document("name",nombre)).first();
-        Dealer d = new Dealer();
-        d.setCodigo(Integer.parseInt(found.get("codigo").toString()));
-        d.setNombre(found.get("name").toString());
-        d.setporEntregar((Queue)found.get("por entregar"));
+    public static Dealer getDealer(String nombre, int codigo){
+        MongoCollection collection = mongoDatabase.getCollection("Dealers");
+        Document doc = new Document("name",nombre);
+                 doc.append("codigo", codigo);
+        Document found = (Document) collection.find(doc).first();
+        Dealer d = null;
+        if(found != null){
+            d = new Dealer();
+            d.setCodigo(Integer.parseInt(found.get("codigo").toString()));
+            d.setNombre(found.get("name").toString());
+            d.setporEntregar((Queue)found.get("por entregar"));
+        }
         return d;
     }
     public static Pedido buscarPedido(Dealer dealer){
@@ -63,7 +67,6 @@ public final class MongoDB
             dealer.agregarPedido(p);
             actualizarDealer(dealer, p);
         }
-        
         return p;
     }
     public static void pedidoEntregado(Pedido p){

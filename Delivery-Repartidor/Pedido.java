@@ -56,4 +56,28 @@ public class Pedido
     public void setObs(String obs){
         observaciones = obs;
     }
+    
+    public Usuario getUsuario(){
+        return usuario;
+    }
+    
+    public Producto getProducto(){
+        return producto;
+    }
+    
+    public int getCantidad(){
+        return cantidad;
+    }
+    
+    public String getObservaciones(){
+        return observaciones;
+    }
+    
+    public boolean getEntregaInmediata(){
+        return entregaInmediata;
+    }
+    
+    public Dealer getDealer(){
+        return dealerAsignado;
+    }
 }
