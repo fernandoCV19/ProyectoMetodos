@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Producto
+comment1.params=id\ nombre\ caracteristicas\ precio
+comment1.target=Producto(int,\ java.lang.String,\ java.lang.String,\ double)
+comment10.params=
+comment10.target=double\ getPrecio()
+comment2.params=
+comment2.target=Producto()
+comment3.params=
+comment3.target=org.bson.Document\ getDocument()
+comment4.params=nom
+comment4.target=void\ setNombre(java.lang.String)
+comment5.params=carac
+comment5.target=void\ setCarac(java.lang.String)
+comment6.params=prec
+comment6.target=void\ setPrecio(double)
+comment7.params=prod
+comment7.target=Producto\ getProducto(org.bson.Document)
+comment8.params=
+comment8.target=java.lang.String\ getNombre()
+comment9.params=
+comment9.target=java.lang.String\ getCaracteristicas()
+numComments=11

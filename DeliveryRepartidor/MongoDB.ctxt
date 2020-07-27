@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=MongoDB
+comment1.params=
+comment1.target=MongoDB()
+comment2.params=
+comment2.target=MongoDB\ getInstanceMongoDB()
+comment3.params=nombre\ codigo
+comment3.target=Dealer\ getDealer(java.lang.String,\ int)
+comment4.params=dealer
+comment4.target=Pedido\ buscarPedido(Dealer)
+comment5.params=p
+comment5.target=void\ pedidoEntregado(Pedido)
+comment6.params=d\ p
+comment6.target=void\ actualizarDealer(Dealer,\ Pedido)
+comment7.params=d
+comment7.target=void\ insertDealer(Dealer)
+numComments=8

@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Dealer
+comment1.params=
+comment1.target=Dealer()
+comment10.params=p
+comment10.target=Pedido\ pedidoEntregado(Pedido)
+comment2.params=
+comment2.target=java.lang.String\ getNombre()
+comment3.params=
+comment3.target=java.util.Queue\ getLista()
+comment4.params=
+comment4.target=int\ getCodigo()
+comment5.params=list
+comment5.target=void\ setporEntregar(java.util.Queue)
+comment6.params=codigo
+comment6.target=void\ setCodigo(int)
+comment7.params=nombre
+comment7.target=void\ setNombre(java.lang.String)
+comment8.params=p
+comment8.target=org.bson.Document\ agregarPedido(Pedido)
+comment9.params=
+comment9.target=org.bson.Document\ getDocument()
+numComments=11
