@@ -5,20 +5,7 @@ import java.util.ArrayList;
 public class Traductor
 {
     private static ArrayList <Producto> productos = MongoDB.getInstanceMongoDB().getInventario();
-    /*
-    public static Pedido traducir(Usuario usuario,String pedido){
-        String [] text = pedido.split("[ ,.]");
-        String nombreProducto = nombreProducto(text);
-        Producto producto = buscarProducto(nombreProducto);
-        int cantidad = conseguirCantidad(text);
-        String observaciones = conseguirObservaciones(text);
-        
-        Pedido p = new Pedido(usuario,producto,cantidad,observaciones);
-        
-        return p;
-    }
-    */
-    
+
     public static Producto nombreProducto(String pedido){
         String [] text = pedido.split("[ ,.]");
         String res = "";
@@ -45,7 +32,7 @@ public class Traductor
     private static Producto buscarProducto(String nombre){
         Producto p = null;
         for (Producto aux:productos){
-            if (aux.getNombre().equals(nombre)){
+            if (aux.getNombre().equalsIgnoreCase(nombre)){
                 p = aux;
             }
         }

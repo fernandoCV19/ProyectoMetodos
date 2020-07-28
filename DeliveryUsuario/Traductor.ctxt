@@ -2,7 +2,6 @@
 comment0.target=Traductor
 comment1.params=pedido
 comment1.target=Producto\ nombreProducto(java.lang.String)
-comment1.text=\n\ \ \ \ public\ static\ Pedido\ traducir(Usuario\ usuario,String\ pedido){\n\ \ \ \ \ \ \ \ String\ []\ text\ \=\ pedido.split("[\ ,.]");\n\ \ \ \ \ \ \ \ String\ nombreProducto\ \=\ nombreProducto(text);\n\ \ \ \ \ \ \ \ Producto\ producto\ \=\ buscarProducto(nombreProducto);\n\ \ \ \ \ \ \ \ int\ cantidad\ \=\ conseguirCantidad(text);\n\ \ \ \ \ \ \ \ String\ observaciones\ \=\ conseguirObservaciones(text);\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ Pedido\ p\ \=\ new\ Pedido(usuario,producto,cantidad,observaciones);\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ return\ p;\n\ \ \ \ }\n
 comment2.params=nombre
 comment2.target=Producto\ buscarProducto(java.lang.String)
 comment3.params=pedido
