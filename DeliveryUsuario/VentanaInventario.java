@@ -54,13 +54,8 @@ public class VentanaInventario extends JFrame
 
         JScrollPane produc = new JScrollPane(productos);
         //poner paneles
-        this.getContentPane().
-
-        add(regreso,BorderLayout.NORTH);
-        this.
-        getContentPane().
-
-        add(produc,BorderLayout.CENTER);
+        this.getContentPane().add(regreso,BorderLayout.NORTH);
+        this.getContentPane().add(produc,BorderLayout.CENTER);
 
         //visible
         this.setVisible(true);
@@ -234,15 +229,14 @@ public class VentanaInventario extends JFrame
 
                 observaciones = new JTextArea();
                 observaciones.setBounds(200,460,400,80);
-                
-                
+
                 //radio botones
                 inmediato = new JRadioButton("Entrega inmediata",true);
                 inmediato.setBounds(20,560,400,30);
-                
+
                 normal = new JRadioButton ("Entrega normal",false);
                 normal.setBounds(20,600,400,30);
-                
+
                 ButtonGroup grupo = new ButtonGroup();
                 grupo.add(inmediato);
                 grupo.add(normal);
@@ -316,17 +310,17 @@ public class VentanaInventario extends JFrame
                                                 }
 
                                                 String obser = observaciones.getText();
-                                                
+
                                                 boolean inme = false;
                                                 if (inmediato.isFocusOwner()){
                                                     inme = true;
                                                 }
-                                                
+
                                                 Pedido ped = new Pedido(u,p,canti,obser,inme);
                                                 MongoDB.insertarPedido(ped);
-                                                
+
                                                 //XML.añadirPedido(ped);
-                                                
+
                                                 JOptionPane.showMessageDialog(fondo,"Pedido realizado");
                                             }
                                         }

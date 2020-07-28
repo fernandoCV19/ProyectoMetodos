@@ -8,6 +8,7 @@ import java.io.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
 import javax.xml.transform.stream.*;
+import java.util.ArrayList;
 
 public class XML
 {
@@ -17,6 +18,14 @@ public class XML
         Producto p = new Producto(3,"Play","1TB",340.6);
         Pedido ped = new Pedido (u,p,4,"rapido",true);
         añadirPedido(ped);
+    }
+
+    public static Pedido yuda(){
+        Direccion d = new Direccion("Principal",446,"Rejasnegras");
+        Usuario u = new Usuario("Fernando",d,7533,31413);
+        Producto p = new Producto(3,"Play","1TB",340.6);
+        Pedido ped = new Pedido (u,p,4,"rapido",true);
+        return ped;
     }
 
     public static void añadirPedido(Pedido p){
@@ -88,6 +97,7 @@ public class XML
             nuevoPedido.appendChild(entregaInmediata);
             nuevoPedido.appendChild(usuario);
             nuevoPedido.appendChild(direccion);
+            nuevoPedido.appendChild(producto);
 
             nodoRaiz.appendChild(nuevoPedido);
 
@@ -98,15 +108,14 @@ public class XML
 
             transformer.transform(source,result);
         }catch(ParserConfigurationException parseE){
-            System.out.println("1");
+            System.out.println(parseE);
         }catch(SAXException saxE){
-            System.out.println("2");
+            System.out.println(saxE);
         }catch (IOException io){
-            System.out.println("3");
+            System.out.println(io);
         }catch (TransformerConfigurationException tce){
-            System.out.println("4");
+            System.out.println(tce.getCause());
         }catch (TransformerException te){
-
             System.out.println(te.getCause());
         }
     }
@@ -124,7 +133,7 @@ public class XML
             Element raiz = document.getDocumentElement();
 
             Element pedidos = document.createElement("Pedidos");
-            
+
             raiz.appendChild(pedidos);
 
             // GENERA XML
@@ -138,5 +147,66 @@ public class XML
         } catch(ParserConfigurationException e) {
 
         }
+    }
+
+    public static ArrayList<Pedido> getPedidos(){
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+        try{
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document documento = builder.parse("Pedidos.xml");
+            
+            NodeList listaPedidos = documento.getElementsByTagName("Pedidos"); 
+            
+            for (int i = 0; i<listaPedidos.getLength();i++){
+                Node nodo = listaPedidos.item(i);
+                Element e = (Element) nodo; 
+                NodeList pedido = e.getChildNodes();
+                
+                int cantidad = Integer.parseInt(pedido.item(0).getNodeValue());
+                String observaciones = pedido.item(1).getNodeValue();
+                boolean inme = Boolean.parseBoolean(pedido.item(2).getNodeValue()); 
+                
+                Node usuario = pedido.item(3);
+                Element e1 = (Element) usuario;
+                NodeList usua = e1.getChildNodes();
+                
+                String nombreUsuario = usua.item(0).getNodeValue();
+                int ci = Integer.parseInt(usua.item(1).getNodeValue());
+                int celular = Integer.parseInt(usua.item(2).getNodeValue());
+                
+                Node direccionNodo = pedido.item(4);
+                Element e2 = (Element) direccionNodo;
+                NodeList direccion = e2.getChildNodes();
+                
+                String calle = direccion.item(0).getNodeValue();
+                int nroCasa = Integer.parseInt(direccion.item(1).getNodeValue());
+                String referencias = direccion.item(2).getNodeValue();
+                
+                
+                Node productoN = pedido.item(5);
+                Element e3 = (Element) productoN;
+                NodeList producto = e3.getChildNodes();
+                
+                String nombreProducto= producto.item(0).getNodeValue();
+                String caracteristicas=producto.item(1).getNodeValue();
+                Double precio = Double.parseDouble(producto.item(2).getNodeValue());
+                
+                
+                Direccion d = new Direccion(calle,nroCasa,referencias);
+                Usuario u = new Usuario(nombreUsuario,d,ci,celular);
+                Producto p = new Producto(0,nombreProducto,caracteristicas,precio);
+                Pedido ped = new Pedido(u,p,cantidad,observaciones,inme);
+                
+                pedidos.add(ped);
+            }
+        }catch(ParserConfigurationException pce){
+
+        }catch (SAXException sae){
+
+        }catch (IOException io){
+
+        }
+        return pedidos;
     }
 }

@@ -2,8 +2,12 @@
 comment0.target=XML
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
-comment2.params=p
-comment2.target=void\ a\u00F1adirPedido(Pedido)
-comment3.params=
-comment3.target=void\ crearXML()
-numComments=4
+comment2.params=
+comment2.target=Pedido\ yuda()
+comment3.params=p
+comment3.target=void\ a\u00F1adirPedido(Pedido)
+comment4.params=
+comment4.target=void\ crearXML()
+comment5.params=
+comment5.target=java.util.ArrayList\ getPedidos()
+numComments=6

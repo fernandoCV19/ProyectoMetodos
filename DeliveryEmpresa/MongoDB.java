@@ -53,7 +53,7 @@ public final class MongoDB
     public static String getInformeMasVendedor(){
         MongoCollection collection_Dealers = mongoDatabase.getCollection("Dealers");
         MongoCollection collection_Pedidos = mongoDatabase.getCollection("Pedidos");
-        FindIterable<Document> dealers = collection.find();
+        FindIterable<Document> dealers = collection_Dealers.find();
         HashMap<String, Long> informe = new HashMap<>();
         String res = "Lista de dealers y su cantidad de productos vendidos: \r";
         long mayor = 0;
@@ -73,7 +73,7 @@ public final class MongoDB
     }
     public static double getGanancias(){
         MongoCollection collection_Pedidos = mongoDatabase.getCollection("Pedidos");
-        FindIterable<Document> productos = collection.find();
+        FindIterable<Document> productos = collection_Pedidos.find();
         double ganancia = 0.0;
         for(Document d: productos){
             Document doc = (Document)d.get("producto");
@@ -83,7 +83,7 @@ public final class MongoDB
     }
     public static String getVentas(){
         MongoCollection collection_Pedidos = mongoDatabase.getCollection("Pedidos");
-        FindIterable<Document> productos = collection.find();
+        FindIterable<Document> productos = collection_Pedidos.find();
         String res = "";
         for(Document d: productos){
             Document producto = (Document)d.get("producto");
@@ -109,8 +109,8 @@ public final class MongoDB
         return res;
     }
     public static String getInventario(){
-        MongoCollection collection_Pedidos = mongoDatabase.getCollection("Productos");
-        FindIterable<Document> productos = collection.find();
+        MongoCollection collection_Productos = mongoDatabase.getCollection("Productos");
+        FindIterable<Document> productos = collection_Productos.find();
         String res = "";
         for(Document d: productos){
             res = res + d.getObjectId("_id").getDate().toString()+ "\r";
@@ -123,8 +123,8 @@ public final class MongoDB
         return res;
     }
     public static String getDealers(){
-        MongoCollection collection_Pedidos = mongoDatabase.getCollection("Dealers");
-        FindIterable<Document> dealers = collection.find();
+        MongoCollection collection_Dealers = mongoDatabase.getCollection("Dealers");
+        FindIterable<Document> dealers = collection_Dealers.find();
         String res = "";
         for(Document d: dealers){
             res = res + d.getObjectId("_id").getDate().toString()+ "\r";

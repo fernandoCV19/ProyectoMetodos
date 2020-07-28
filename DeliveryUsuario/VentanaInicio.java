@@ -43,7 +43,8 @@ public class VentanaInicio extends JFrame implements Runnable
         pedidos = new JButton ("Mis Pedidos");
         ActionListener l = new ActionListener(){
                 public void actionPerformed(ActionEvent e){
-                    JOptionPane.showMessageDialog(fondo,"Porximamente...");
+                    VentanaPedidos p = new VentanaPedidos();
+                    dispose();
                 }
             };
         pedidos.addActionListener(l);
