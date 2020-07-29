@@ -2,6 +2,10 @@
 comment0.target=MongoDB
 comment1.params=
 comment1.target=MongoDB()
+comment10.params=d
+comment10.target=void\ agregarDealer(Dealer)
+comment11.params=p
+comment11.target=void\ agregarProducto(Producto)
 comment2.params=
 comment2.target=MongoDB\ getInstanceMongoDB()
 comment3.params=
@@ -18,4 +22,4 @@ comment8.params=
 comment8.target=java.lang.String\ getDealers()
 comment9.params=
 comment9.target=java.lang.String\ getUsuarios()
-numComments=10
+numComments=12

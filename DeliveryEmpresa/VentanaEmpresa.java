@@ -25,8 +25,8 @@ public class VentanaEmpresa extends JFrame
         boton1.setIcon(icono);
         ActionListener l1 = new ActionListener(){
             public void actionPerformed (ActionEvent e){
-                String aux = mongo.getInformeMasVendido();
-                JOptionPane.showMessageDialog(panel,aux);
+                mongo.getInformeMasVendido();
+                JOptionPane.showMessageDialog(panel,"Informe de ls mas vendido generado");
             }
         };
         boton1.addActionListener(l1);
@@ -38,8 +38,8 @@ public class VentanaEmpresa extends JFrame
         boton2.setIcon(icono);
         ActionListener l2 = new ActionListener(){
             public void actionPerformed (ActionEvent e){
-                String aux = mongo.getInformeMasVendedor();
-                JOptionPane.showMessageDialog(panel,aux);
+                mongo.getInformeMasVendedor();
+                JOptionPane.showMessageDialog(panel,"Informe generado");
             }
         };
         boton2.addActionListener(l2);
@@ -51,9 +51,8 @@ public class VentanaEmpresa extends JFrame
         boton3.setIcon(icono);
         ActionListener l3 = new ActionListener(){
             public void actionPerformed (ActionEvent e){
-                System.out.print(mongo.getGanancias());
-                String aux = Double.toString(mongo.getGanancias());
-                JOptionPane.showMessageDialog(panel,aux);
+                mongo.getGanancias();
+                JOptionPane.showMessageDialog(panel,"Informe de ganancias generado");
             }
         };
         boton3.addActionListener(l3);
@@ -65,8 +64,8 @@ public class VentanaEmpresa extends JFrame
         boton4.setIcon(icono);
         ActionListener l4 = new ActionListener(){
             public void actionPerformed (ActionEvent e){
-                String aux = mongo.getVentas();
-                JOptionPane.showMessageDialog(panel,aux);
+                mongo.getVentas();
+                JOptionPane.showMessageDialog(panel,"Informe de ventas generado");
             }
         };
         boton4.addActionListener(l4);
@@ -78,8 +77,8 @@ public class VentanaEmpresa extends JFrame
         boton5.setIcon(icono);
         ActionListener l5 = new ActionListener(){
             public void actionPerformed (ActionEvent e){
-                String aux = mongo.getDealers();
-                JOptionPane.showMessageDialog(panel,aux);
+                mongo.getDealers();
+                JOptionPane.showMessageDialog(panel,"Informe de repartidores generado");
             }
         };
         boton5.addActionListener(l5);
@@ -91,8 +90,8 @@ public class VentanaEmpresa extends JFrame
         boton6.setIcon(icono);
         ActionListener l6 = new ActionListener(){
             public void actionPerformed (ActionEvent e){
-                String aux = mongo.getUsuarios();
-                JOptionPane.showMessageDialog(panel,aux);
+                mongo.getUsuarios();
+                JOptionPane.showMessageDialog(panel,"Informe de usuarios generado");
             }
         };
         boton6.addActionListener(l6);
@@ -130,8 +129,8 @@ public class VentanaEmpresa extends JFrame
         boton9.setIcon(icono);
         ActionListener l9 = new ActionListener(){
             public void actionPerformed (ActionEvent e){
-                String aux = mongo.getInventario();
-                JOptionPane.showMessageDialog(panel,aux);
+                mongo.getInventario();
+                JOptionPane.showMessageDialog(panel,"Informe de inventario generado");
             }
         };
         boton9.addActionListener(l9);

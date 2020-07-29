@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=animado
+comment1.params=j
+comment1.target=animado(javax.swing.JPanel)
+comment10.params=hilo2
+comment10.target=void\ setHilo2(java.lang.Thread)
+comment2.params=g
+comment2.target=void\ paint(java.awt.Graphics)
+comment3.params=
+comment3.target=void\ animacion()
+comment4.params=
+comment4.target=boolean\ isChocapuerta()
+comment5.params=chocapuerta
+comment5.target=void\ setChocapuerta(boolean)
+comment6.params=
+comment6.target=void\ run()
+comment7.params=
+comment7.target=javax.swing.JPanel\ getPanel()
+comment8.params=panel
+comment8.target=void\ setPanel(javax.swing.JPanel)
+comment9.params=
+comment9.target=java.lang.Thread\ getHilo2()
+numComments=11

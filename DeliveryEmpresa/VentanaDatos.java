@@ -57,6 +57,7 @@ public class VentanaDatos extends JFrame
         ActionListener l = new ActionListener(){
              public void actionPerformed (ActionEvent e){
                 agregarDealer();
+                MongoDB.agregarDealer(nuevo);
                 JOptionPane.showMessageDialog(panel,"Dealer Agregado");
             }
         };

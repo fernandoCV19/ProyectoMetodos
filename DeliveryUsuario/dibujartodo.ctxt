@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=dibujartodo
+comment1.params=contenedor\ j
+comment1.target=dibujartodo(javax.swing.JComponent,\ javax.swing.JPanel)
+comment2.params=t
+comment2.target=void\ cuadraelpanel(javax.swing.JPanel)
+comment3.params=
+comment3.target=boolean\ llevarfalse()
+comment4.params=
+comment4.target=void\ animacion()
+comment5.params=
+comment5.target=boolean\ isalivehilo()
+comment6.params=g
+comment6.target=void\ paint(java.awt.Graphics)
+comment7.params=
+comment7.target=void\ animarchochapuerta()
+comment8.params=
+comment8.target=void\ noanimarchochapuerta()
+numComments=9

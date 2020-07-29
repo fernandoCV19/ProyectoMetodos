@@ -220,6 +220,7 @@ public class VentanaMisPedidos extends JFrame
                     public void actionPerformed(ActionEvent e){
                         MongoDB.pedidoEntregado(pedido);
                         yo.pedidoEntregado(pedido);
+                        VentanaMisPedidos nueva = new VentanaMisPedidos(yo);
                         dispose();
                     }
                 };

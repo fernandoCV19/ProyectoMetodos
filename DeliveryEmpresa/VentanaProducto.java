@@ -74,6 +74,7 @@ public class VentanaProducto extends JFrame
              public void actionPerformed (ActionEvent e){
                 nuevo = new Producto();
                 agregarProducto();
+                MongoDB.agregarProducto(nuevo);
                 JOptionPane.showMessageDialog(panel,"Producto Agregado");
             }
         };

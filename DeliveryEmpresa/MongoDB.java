@@ -22,12 +22,14 @@ public final class MongoDB
         mongoClient = new MongoClient (clientURI);
         mongoDatabase = mongoClient.getDatabase("Delivery");
     }
+
     public static MongoDB getInstanceMongoDB(){
         if(instance == null){
             instance = new MongoDB();
         }
         return instance;
     }
+
     public static String getInformeMasVendido(){
         MongoCollection collection_Productos = mongoDatabase.getCollection("Productos");
         MongoCollection collection_Pedidos = mongoDatabase.getCollection("Pedidos");
@@ -50,6 +52,7 @@ public final class MongoDB
         EscribeFichero.main(res, "RegistroProductos.txt");
         return res;
     }
+
     public static String getInformeMasVendedor(){
         MongoCollection collection_Dealers = mongoDatabase.getCollection("Dealers");
         MongoCollection collection_Pedidos = mongoDatabase.getCollection("Pedidos");
@@ -71,6 +74,7 @@ public final class MongoDB
         EscribeFichero.main(res, "Mas vendedor.txt");
         return res;
     }
+
     public static double getGanancias(){
         MongoCollection collection_Pedidos = mongoDatabase.getCollection("Pedidos");
         FindIterable<Document> productos = collection_Pedidos.find();
@@ -81,6 +85,7 @@ public final class MongoDB
         }
         return ganancia;
     }
+
     public static String getVentas(){
         MongoCollection collection_Pedidos = mongoDatabase.getCollection("Pedidos");
         FindIterable<Document> productos = collection_Pedidos.find();
@@ -108,6 +113,7 @@ public final class MongoDB
         EscribeFichero.main(res, "Pedidos.txt");
         return res;
     }
+
     public static String getInventario(){
         MongoCollection collection_Productos = mongoDatabase.getCollection("Productos");
         FindIterable<Document> productos = collection_Productos.find();
@@ -122,6 +128,7 @@ public final class MongoDB
         EscribeFichero.main(res, "Inventario.txt");
         return res;
     }
+
     public static String getDealers(){
         MongoCollection collection_Dealers = mongoDatabase.getCollection("Dealers");
         FindIterable<Document> dealers = collection_Dealers.find();
@@ -135,6 +142,7 @@ public final class MongoDB
         EscribeFichero.main(res, "Dealers.txt");
         return res;
     }
+
     public static String getUsuarios(){
         MongoCollection collection_Pedidos = mongoDatabase.getCollection("Usuarios");
         FindIterable<Document> usuarios = collection_Pedidos.find();
@@ -153,5 +161,15 @@ public final class MongoDB
         }
         EscribeFichero.main(res, "Usuarios.txt");
         return res;
+    }
+
+    public static void agregarDealer(Dealer d){
+        MongoCollection collection_Dealer = mongoDatabase.getCollection("Dealers");
+        collection_Dealer.insertOne(d.getDocument());
+    }
+
+    public static void agregarProducto(Producto p){
+        MongoCollection collection_Productos = mongoDatabase.getCollection("Productos");
+        collection_Productos.insertOne(p.getDocument());
     }
 }

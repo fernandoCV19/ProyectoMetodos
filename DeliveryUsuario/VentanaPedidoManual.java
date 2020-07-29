@@ -139,7 +139,7 @@ public class VentanaPedidoManual extends JFrame
                                                 Usuario u = conseguirUsuario();
                                                 String observaciones = Traductor.conseguirObservaciones(pedir.getText());
                                                 boolean aux = false;
-                                                if (inmediato.isFocusOwner()){
+                                                if (inmediato.isSelected()){
                                                     aux = true;
                                                 }
                                                 
@@ -149,7 +149,9 @@ public class VentanaPedidoManual extends JFrame
                                                 
                                                 XML.añadirPedido(ped);
 
-                                                JOptionPane.showMessageDialog(panel,"Pedido realizado");
+                                                //JOptionPane.showMessageDialog(panel,"Pedido realizado");
+                                                Vista animacion = new Vista();
+                                                animacion.main();
                                             }
                                         }
                                     }

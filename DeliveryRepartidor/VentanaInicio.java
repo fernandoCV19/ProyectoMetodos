@@ -73,11 +73,11 @@ public class VentanaInicio extends JFrame
         ActionListener al = new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 Pedido p = MongoDB.buscarPedido(yo);
-                if (p==null){
+                if (p.getProducto()==null){
                     JOptionPane.showMessageDialog(fondo,"No hay nuevos pedidos disponibles. Intenta despues");
                 }   else{
                     JOptionPane.showMessageDialog(fondo,"Se agrego un nuevo pedido a tu inventario");
-                    System.out.println(yo.getLista().size());
+
                 }
             }
         };

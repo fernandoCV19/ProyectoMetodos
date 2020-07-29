@@ -69,6 +69,7 @@ public final class MongoDB
             dealer.agregarPedido(p);
             actualizarDealer(dealer, found);
             
+            System.out.println(p.getProducto().getNombre());
         } 
         return p;
     }

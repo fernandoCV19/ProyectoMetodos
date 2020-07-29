@@ -312,7 +312,7 @@ public class VentanaInventario extends JFrame
                                                 String obser = observaciones.getText();
 
                                                 boolean inme = false;
-                                                if (inmediato.isFocusOwner()){
+                                                if (inmediato.isSelected()){
                                                     inme = true;
                                                 }
 
@@ -321,7 +321,10 @@ public class VentanaInventario extends JFrame
 
                                                 XML.añadirPedido(ped);
 
-                                                JOptionPane.showMessageDialog(fondo,"Pedido realizado");
+                                                //JOptionPane.showMessageDialog(fondo,"Pedido realizado");
+                                                Vista animacion = new Vista();
+                                                animacion.main();
+                                                dispose();
                                             }
                                         }
                                     }
