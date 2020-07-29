@@ -42,7 +42,7 @@ public class Pedido
         document.append("observaciones", observaciones);
         document.append("inmediato", entregaInmediata);
         document.append("entregado", entregado);
-        document.append("encargardo", dealerAsignado.getDocument());
+        document.append("encargardo", null);
         return document;
     }
 

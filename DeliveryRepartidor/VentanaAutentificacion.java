@@ -57,6 +57,7 @@ public class VentanaAutentificacion extends JFrame
                     JOptionPane.showMessageDialog(fondo,"Ingresa un nombre de usuario o id valido");
                     else{
                         VentanaInicio ini = new VentanaInicio(yo);
+                        dispose();
                     }
             }
         };

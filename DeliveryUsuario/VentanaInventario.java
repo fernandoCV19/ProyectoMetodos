@@ -319,7 +319,7 @@ public class VentanaInventario extends JFrame
                                                 Pedido ped = new Pedido(u,p,canti,obser,inme);
                                                 MongoDB.insertarPedido(ped);
 
-                                                //XML.añadirPedido(ped);
+                                                XML.añadirPedido(ped);
 
                                                 JOptionPane.showMessageDialog(fondo,"Pedido realizado");
                                             }

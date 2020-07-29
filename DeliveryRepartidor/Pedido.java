@@ -10,7 +10,7 @@ public class Pedido
     private String observaciones;
     private boolean entregaInmediata;
     private boolean entregado;
-    private Dealer dealerAsignado;
+    private String dealerAsignado;
     
     public Pedido(){
         usuario = null;
@@ -18,7 +18,7 @@ public class Pedido
         cantidad = 0;
         observaciones = "";
         entregado = false;
-        dealerAsignado = null;
+        dealerAsignado = "";
         id = null;
     }
      public Document getDocument(){
@@ -28,7 +28,7 @@ public class Pedido
                  document.append("observaciones", observaciones);
                  document.append("inmediato", entregaInmediata);
                  document.append("entregado", entregado);
-                 document.append("encargardo", dealerAsignado.getDocument());
+                 document.append("encargado", dealerAsignado);
         return document;
     }
     public void setID(ObjectId id){
@@ -37,7 +37,7 @@ public class Pedido
     public ObjectId getID(){
         return id;
     }
-    public void setDealer(Dealer encargado){
+    public void setDealer(String encargado){
         dealerAsignado = encargado;
     }
     public void setUsuario(Usuario us){
@@ -77,7 +77,7 @@ public class Pedido
         return entregaInmediata;
     }
     
-    public Dealer getDealer(){
+    public String getDealer(){
         return dealerAsignado;
     }
 }

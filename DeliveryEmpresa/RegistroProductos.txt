@@ -1,20 +1,1 @@
-LISTA DE PRODUCTOS Y LAS VECES QUE SE HAN VENDIDO:
-Nombre del producto: ChurrascoCantidad de ventas: 0
-Nombre del producto: piqueCantidad de ventas: 0
-Nombre del producto: ChicharonCantidad de ventas: 0
-Nombre del producto: FideusuchuCantidad de ventas: 0
-Nombre del producto: RangaCantidad de ventas: 0
-Nombre del producto: SilpanchoCantidad de ventas: 0
-Nombre del producto: Lomo borrachoCantidad de ventas: 0
-Nombre del producto: Sopa de maniCantidad de ventas: 0
-Nombre del producto: AnticuchoCantidad de ventas: 0
-Nombre del producto: ChurrascoCantidad de ventas: 0
-Nombre del producto: piqueCantidad de ventas: 0
-Nombre del producto: ChicharonCantidad de ventas: 0
-Nombre del producto: FideusuchuCantidad de ventas: 0
-Nombre del producto: RangaCantidad de ventas: 0
-Nombre del producto: SilpanchoCantidad de ventas: 0
-Nombre del producto: Lomo borrachoCantidad de ventas: 0
-Nombre del producto: Sopa de maniCantidad de ventas: 0
-Nombre del producto: AnticuchoCantidad de ventas: 0
-Mas vendido: No existe
+LISTA DE PRODUCTOS Y LAS VECES QUE SE HAN VENDIDONombre del producto: ChurrascoCantidad de ventas: 0Nombre del producto: piqueCantidad de ventas: 0Nombre del producto: ChicharonCantidad de ventas: 0Nombre del producto: FideusuchuCantidad de ventas: 0Nombre del producto: RangaCantidad de ventas: 0Nombre del producto: SilpanchoCantidad de ventas: 0Nombre del producto: Lomo borrachoCantidad de ventas: 0Nombre del producto: Sopa de maniCantidad de ventas: 0Nombre del producto: AnticuchoCantidad de ventas: 0Nombre del producto: ChurrascoCantidad de ventas: 0Nombre del producto: piqueCantidad de ventas: 0Nombre del producto: ChicharonCantidad de ventas: 0Nombre del producto: FideusuchuCantidad de ventas: 0Nombre del producto: RangaCantidad de ventas: 0Nombre del producto: SilpanchoCantidad de ventas: 0Nombre del producto: Lomo borrachoCantidad de ventas: 0Nombre del producto: Sopa de maniCantidad de ventas: 0Nombre del producto: AnticuchoCantidad de ventas: 0Mas vendido: No existe

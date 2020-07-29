@@ -1,11 +1,12 @@
 import org.bson.Document;
+import org.bson.types.ObjectId;
 public class Usuario
 {
     private String nombre;
     private Direccion direccion;
     private int nroCi;
     private int nroCelular;
-    
+    private ObjectId id;
     public Usuario(){
         nombre="";
         direccion = null;
@@ -19,6 +20,9 @@ public class Usuario
                  document.append("CI", nroCi);
                  document.append("celular", nroCelular);
         return document;
+    }
+    public void setID(ObjectId id){
+        this.id = id;
     }
     public void setNombre(String nom){
         nombre = nom;

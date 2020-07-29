@@ -2,9 +2,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import java.awt.event.*;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import javax.swing.border.*;
 
 public class VentanaMisPedidos extends JFrame
 {
@@ -19,14 +22,34 @@ public class VentanaMisPedidos extends JFrame
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("MIS PEDIDOS");
         this.setLocationRelativeTo(null);
-
+        
+        iniciarBotonRegreso();
+        
+        fondo = new JPanel();
+        GridLayout grid = new GridLayout(0,1);
+        fondo.setLayout(grid);
         for (Pedido p: yo.getLista()){
             Especificaciones esp = new Especificaciones(p);
             fondo.add(esp);
         } 
+        
+        JScrollPane nuevo = new JScrollPane(fondo);
+        
+        this.getContentPane().add(regresar,BorderLayout.NORTH);
+        this.getContentPane().add(nuevo,BorderLayout.CENTER);
         this.setVisible(true);
     }
 
+    private void iniciarBotonRegreso(){
+        regresar = new JButton("Regresar");
+        ActionListener al = new ActionListener(){
+            public void actionPerformed(ActionEvent a){
+                VentanaInicio vi = new VentanaInicio(yo);
+                dispose();
+            }
+        };
+        regresar.addActionListener(al);
+    }
     public class Especificaciones extends JPanel
     {
         Pedido pedido;
@@ -35,8 +58,12 @@ public class VentanaMisPedidos extends JFrame
         JButton entregado;
 
         public Especificaciones (Pedido p){
-            this.pedido = pedido;
-
+            pedido = p;
+            
+            
+            //this.setSize(200,300);
+            //this.setPreferredSize(new Dimension(200,300));
+            
             fondo = new JPanel();
             GridLayout grid = new GridLayout(5,1);
             fondo.setLayout(grid);
@@ -115,8 +142,8 @@ public class VentanaMisPedidos extends JFrame
                     inmediatox = new JLabel("No");
 
             medioInf.add(cantidad);
-            medioInf.add(precio);
             medioInf.add(cantidadx);
+            medioInf.add(precio);
             medioInf.add(preciox);
             medioInf.add(inmediato);
             medioInf.add(inmediatox);
@@ -155,6 +182,8 @@ public class VentanaMisPedidos extends JFrame
             fondo.add(medioInf);
             fondo.add(inferior);
 
+            this.add(fondo);
+            this.setBorder(new BevelBorder(BevelBorder.RAISED));
             this.setVisible(true);
         }
 

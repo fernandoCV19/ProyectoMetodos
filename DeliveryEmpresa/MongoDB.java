@@ -77,7 +77,7 @@ public final class MongoDB
         double ganancia = 0.0;
         for(Document d: productos){
             Document doc = (Document)d.get("producto");
-            ganancia = ganancia + Integer.parseInt(doc.get("price").toString());
+            ganancia = ganancia + Double.parseDouble(doc.get("price").toString());
         }
         return ganancia;
     }
@@ -102,8 +102,8 @@ public final class MongoDB
             res = res + "calle: "+direccion.get("calle").toString()+ "\r";
             res = res + "nroCasa: "+direccion.get("nroCasa").toString()+ "\r";
             res = res + "referencias: "+direccion.get("referencias").toString()+ "\r";
-            res = res + "CANTIDAD: "+direccion.get("cantidad").toString()+ "\r";
-            res = res + "OBSERVACIONES: "+direccion.get("observaciones").toString()+ "\r";
+            res = res + "CANTIDAD: "+d.get("cantidad").toString()+ "\r";
+            res = res + "OBSERVACIONES: "+d.get("observaciones").toString()+ "\r";
         }
         EscribeFichero.main(res, "Pedidos.txt");
         return res;
@@ -137,7 +137,7 @@ public final class MongoDB
     }
     public static String getUsuarios(){
         MongoCollection collection_Pedidos = mongoDatabase.getCollection("Usuarios");
-        FindIterable<Document> usuarios = collection.find();
+        FindIterable<Document> usuarios = collection_Pedidos.find();
         String res = "";
         for(Document usuario: usuarios){
             Document direccion = (Document)usuario.get("direccion");

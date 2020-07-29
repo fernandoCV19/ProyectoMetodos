@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=VentanaInicio
-comment1.params=yo
+comment1.params=dealer
 comment1.target=VentanaInicio(Dealer)
 comment2.params=
 comment2.target=void\ iniciarBotonMiPedidos()

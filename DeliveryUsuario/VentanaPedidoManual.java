@@ -147,7 +147,7 @@ public class VentanaPedidoManual extends JFrame
                                                 Pedido ped = new Pedido(u,p,cantidad,observaciones,aux);
                                                 MongoDB.insertarPedido(ped);
                                                 
-                                                //XML.añadirPedido(ped);
+                                                XML.añadirPedido(ped);
 
                                                 JOptionPane.showMessageDialog(panel,"Pedido realizado");
                                             }

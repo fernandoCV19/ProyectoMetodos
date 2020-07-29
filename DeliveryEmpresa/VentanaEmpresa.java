@@ -51,6 +51,7 @@ public class VentanaEmpresa extends JFrame
         boton3.setIcon(icono);
         ActionListener l3 = new ActionListener(){
             public void actionPerformed (ActionEvent e){
+                System.out.print(mongo.getGanancias());
                 String aux = Double.toString(mongo.getGanancias());
                 JOptionPane.showMessageDialog(panel,aux);
             }

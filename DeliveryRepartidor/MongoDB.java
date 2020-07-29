@@ -33,23 +33,25 @@ public final class MongoDB
         Document doc = new Document("name",nombre);
                  doc.append("codigo", codigo);
         Document found = (Document) collection.find(doc).first();
-        Dealer d = null;
+        Dealer d = new Dealer();
         if(found != null){
             d = new Dealer();
             d.setCodigo(Integer.parseInt(found.get("codigo").toString()));
             d.setNombre(found.get("name").toString());
-            d.setporEntregar((Queue)found.get("por entregar"));
+            //d.setporEntregar((Queue)found.get("Pedidos por entregar"));
         }
         return d;
     }
     public static Pedido buscarPedido(Dealer dealer){
         MongoCollection collection = mongoDatabase.getCollection("Pedidos");        
         Document buscar = new Document("entregado",false);
-                 buscar.append("inmediato", true);       
+                 buscar.append("inmediato", true);
+                 buscar.append("encargado", null);
         Document found = (Document) collection.find(buscar).first();
         Pedido p = new Pedido();
         if(found==null){
             buscar = new Document("entregado",false);
+            buscar.append("encargado",null);
             found =(Document) collection.find(buscar).first();
         }
         if(found != null){
@@ -65,8 +67,9 @@ public final class MongoDB
             p.setInmediato(Boolean.parseBoolean(found.get("inmediato").toString()));
             p.setID(found.getObjectId("_id"));
             dealer.agregarPedido(p);
-            actualizarDealer(dealer, p);
-        }
+            actualizarDealer(dealer, found);
+            
+        } 
         return p;
     }
     public static void pedidoEntregado(Pedido p){
@@ -75,11 +78,13 @@ public final class MongoDB
         collection.updateOne(new Document("_id",p.getID()),new Document("$set", new Document("entregado", true)));
         
     }
-    private static void actualizarDealer(Dealer d,Pedido p){
+    private static void actualizarDealer(Dealer d,Document p){
         MongoCollection collection = mongoDatabase.getCollection("Dealers");        
-        MongoCollection collection1 = mongoDatabase.getCollection("Pedidos");
-        collection1.updateOne(new Document("_id",p.getID()),new Document("$set", new Document("encargado", d)));
-        collection.updateOne(new Document("nombre",d.getNombre()),new Document("$set", new Document("por entregar", d.getLista())));
+        MongoCollection collection_Pedidos = mongoDatabase.getCollection("Pedidos");
+        collection_Pedidos.updateOne(p,new Document("$set", new Document("encargado", d.getDocument())));
+        System.out.print(collection.updateOne(new Document("name", d.getNombre()),
+                    new Document("$set", new Document("Pedidos sin entregar", d.getDocumentList()))));
+        
 
     }
     public void insertDealer(Dealer d){
